@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PricingPageTemplate from '../../components/PricingPageTemplate'
+import ServicesPageTemplate from '../../components/ServicesPageTemplate'
 
-const PricingPagePreivew = ({ entry, getAsset }) => {
+const ServicesPagePreview = ({ entry, getAsset }) => {
   const entryPricingPlans = entry.getIn(['data', 'pricing', 'plans'])
   const pricingPlans = entryPricingPlans ? entryPricingPlans.toJS() : []
 
   return (
-    <PricingPageTemplate
+    <ServicesPageTemplate
       title={entry.getIn(['data', 'title'])}
       meta_title={entry.getIn(['data', 'meta_title'])}
       meta_description={entry.getIn(['data', 'meta_description'])}
@@ -20,11 +20,11 @@ const PricingPagePreivew = ({ entry, getAsset }) => {
   )
 }
 
-PricingPagePreivew.propTypes = {
+ServicesPagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   getAsset: PropTypes.func,
 }
 
-export default PricingPagePreivew
+export default ServicesPagePreview

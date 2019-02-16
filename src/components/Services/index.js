@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Pricing = ({ data }) => (
+const Services = ({ data }) => (
   <div className='columns'>
     {data.map(price => (
       <div key={price.plan} className='column' style={{border: '1px solid #eaecee'}}>
@@ -26,7 +26,7 @@ const Pricing = ({ data }) => (
   </div>
 )
 
-Pricing.propTypes = {
+Services.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       plan: PropTypes.string,
@@ -37,4 +37,4 @@ Pricing.propTypes = {
   ),
 }
 
-export default Pricing
+export default Services

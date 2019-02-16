@@ -44,10 +44,6 @@ export const pageQuery = graphql`
             text
           }
         }
-        testimonials {
-          author
-          quote
-        }
       }
     }
   }

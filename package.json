@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-business",
-  "description": "Gatsby Business Website Starter",
-  "author": "Vaibhav Sharma",
+  "name": "smartz-bookkeeping",
+  "description": "inspired by Gatsby Business Website Starter, Website for Smartz Bookkeeping & Accounts",
+  "author": "Michael Martinez",
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
