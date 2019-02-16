@@ -6,13 +6,12 @@ import PropTypes from 'prop-types'
 
 const HomePageTemplate = ({
   title,
-  heading,
-  offerings,
+  introduction,
   meta_title,
   meta_description,
   testimonials,
 }) => {
-  const testimonialsToShow = testimonials.filter(t => t.type === 'example');
+  const testimonialsToShow = testimonials.filter(t => t.type !== 'example')
 
   return (
     <div>
@@ -37,12 +36,11 @@ const HomePageTemplate = ({
       </section>
       <section className='section section--gradient'>
         <div className='container'>
-
           <div className='section'>
             <div className='columns'>
               <div className='column is-10 is-offset-1'>
                 <div className='content'>
-                  <Offerings gridItems={offerings.blurbs} />
+                  <Offerings gridItems={introduction.blurbs} />
                   {testimonialsToShow.length > 0 && (
                     <div>
                       <h2 className='has-text-weight-semibold is-size-2'>Testimonials</h2>
@@ -63,8 +61,7 @@ HomePageTemplate.propTypes = {
   title: PropTypes.string,
   meta_title: PropTypes.string,
   meta_description: PropTypes.string,
-  heading: PropTypes.string,
-  offerings: PropTypes.shape({
+  introduction: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
   testimonials: PropTypes.array,

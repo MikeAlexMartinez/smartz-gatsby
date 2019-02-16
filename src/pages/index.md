@@ -5,54 +5,39 @@ meta_title: Home | Smartz Bookkeeping & Accounts
 meta_description: >-
   Bookkeeping, Accounting and Office Management services for
   Bicester, Oxford and the surrounding area.
-heading: Lorem ipsum dolor sit amet
-description: >-
-  Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
-  adipisci velit...
-offerings:
+introduction:
   blurbs:
     - id: 1
       text: >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus 
-        sem a sem ultrices, eget sagittis magna tempor. Quisque pulvinar lorem 
-        molestie sapien ornare cursus. Praesent eget volutpat est. Proin at 
-        sagittis ex. Duis quis dui magna. Nullam urna purus, blandit vitae tincidunt ut, 
-        scelerisque eu sem. Etiam porttitor elit eget mi luctus, vitae blandit enim pretium. 
-        Aenean nec hendrerit leo, a bibendum magna. In hac habitasse platea dictumst. 
-        Suspendisse sapien magna, vestibulum non vehicula id, pellentesque in ante. Nullam 
-        sed auctor tellus. Sed ipsum sem, dapibus nec eros in, feugiat sagittis mi. 
-        Nullam et dui interdum, varius nibh eu, efficitur metus.
+        I have recently started ‘Smartz Bookkeeping & Accounts’ here in 
+        Bicester and I am positive that I can add value to your business 
+        tosupport you in achieving your company goals. With 27 years’ 
+        experience in bookkeeping and accounts I am looking
+        to offer my services to local businesses who need help with their
+        bookkeeping and accounts.
     - id: 2
       text: >
-        Fusce semper turpis sed tortor consectetur condimentum. Nulla facilisi. Nam 
-        ipsum nulla, dapibus eu mi non, commodo commodo sapien. Pellentesque luctus 
-        neque id mauris accumsan, nec imperdiet justo eleifend. Nulla viverra, ipsum 
-        sit amet interdum pharetra, felis lorem sollicitudin felis, vehicula finibus 
-        enim nunc facilisis sapien. Donec nulla nisi, dictum quis nibh et, euismod 
-        semper eros. Praesent nunc tortor, consequat eu justo ac, dictum viverra enim. 
-        Etiam sed dui dapibus mauris congue facilisis. Nulla convallis, lectus vel 
-        vehicula interdum, turpis nunc aliquet sem, ac iaculis ligula mauris id tortor. 
-        Sed eget ornare orci, quis dignissim nulla. Pellentesque aliquam consectetur congue.
+        Good bookkeeping can help you keep track of what is happening in
+        your business and enable smooth running of your accounts. It also
+        helps with planning for a successful future with accurate facts 
+        and figures at your fingertips. Small business owners often try 
+        to do their books themselves, this takes away time from what 
+        matters most - servicing your own clients. Have you ever run out 
+        of time getting your accounts in order to sort your VAT return 
+        and/or end of year accounts? I would like to avoid this 
+        unnecessary stress by working with you to keep everything in 
+        order in a timely fashion.
     - id: 3
       text: >
-        Sed in consequat leo, sit amet ullamcorper lacus. Duis lacinia, metus vitae sollicitudin 
-        pharetra, ipsum augue tristique urna, in rhoncus quam tortor eget sem. Maecenas eu 
-        pharetra orci, ut malesuada nisl. Aliquam erat volutpat. Curabitur egestas eros tincidunt, 
-        scelerisque lectus ac, congue turpis. Fusce egestas sit amet elit et fringilla. Aliquam 
-        erat volutpat. Vivamus ultrices venenatis maximus. Donec volutpat vitae quam at fringilla. 
-        Sed luctus lacus vel tempus posuere. Ut suscipit auctor tortor. Phasellus leo dui, elementum 
-        non sollicitudin eget, porta vehicula odio. Sed mollis, metus sit amet porttitor vehicula, 
-        quam augue pretium erat, at commodo nisl tellus non risus.
+        The bookkeeping services I am offering includes, payroll and RTI,
+        bank reconciliations, CIS returns, VAT returns, credit control/
+        debt chasing, processing sales and purchase invoices, cash flow 
+        reporting and ad hoc reporting as needed.
     - id: 4
       text: >
-        Vestibulum libero lectus, dignissim eget magna sit amet, malesuada tincidunt mi. Vivamus 
-        sed erat iaculis mauris efficitur vehicula. Aliquam sed urna at tellus ullamcorper 
-        venenatis molestie ut mi. Duis vel libero ac lectus cursus tempus. Nullam in dictum felis. 
-        Nam sed laoreet turpis. Sed pretium urna consequat lorem tincidunt, ac scelerisque nisi 
-        sodales. Cras tristique laoreet tempor. Mauris vitae dolor eu mauris malesuada cursus. 
-        Praesent elit lectus, iaculis vel odio vitae, bibendum auctor lacus. Suspendisse potenti. 
-        In tempor, massa quis euismod convallis, felis elit sodales urna, at aliquet mi elit auctor 
-        risus.
+        It may be that you need some temporary help, or a regular amount 
+        of work done each week/month. My services are offered at very 
+        reasonable rates.
 testimonials:
   - author: Vaibhav Sharma
     quote: >-

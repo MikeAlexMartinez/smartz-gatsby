@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {graphql} from 'gatsby'
+import { graphql } from 'gatsby'
 import HomePageTemplate from '../components/HomePageTemplate'
 
-const HomePage = ({data}) => {
+const HomePage = ({ data }) => {
   const {frontmatter} = data.markdownRemark
 
   return (
@@ -13,7 +13,7 @@ const HomePage = ({data}) => {
       meta_description={frontmatter.meta_description}
       heading={frontmatter.heading}
       description={frontmatter.description}
-      offerings={frontmatter.offerings}
+      introduction={frontmatter.introduction}
       testimonials={frontmatter.testimonials}
     />
   )
@@ -36,13 +36,16 @@ export const pageQuery = graphql`
         title
         meta_title
         meta_description
-        heading
-        description
-        offerings {
+        introduction {
           blurbs {
-            image
+            id
             text
           }
+        }
+        testimonials {
+          author
+          quote
+          type
         }
       }
     }
