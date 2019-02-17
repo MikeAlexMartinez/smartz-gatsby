@@ -7,7 +7,7 @@ const ServicesPageTemplate = ({
   title,
   meta_title,
   meta_description,
-  pricing,
+  services,
 }) => (
   <div>
     <Helmet>
@@ -34,13 +34,7 @@ const ServicesPageTemplate = ({
         <div className='section'>
           <div className='columns'>
             <div className='column is-10 is-offset-1'>
-              <div className='content'>
-                <h2 className='has-text-weight-semibold is-size-2'>
-                  {pricing.heading}
-                </h2>
-                <p className='is-size-5'>{pricing.description}</p>
-                <Services data={pricing.plans} />
-              </div>
+              <Services data={services} />
             </div>
           </div>
         </div>
@@ -53,10 +47,9 @@ ServicesPageTemplate.propTypes = {
   title: PropTypes.string,
   meta_title: PropTypes.string,
   meta_description: PropTypes.string,
-  pricing: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-    plans: PropTypes.array,
+  services: PropTypes.shape({
+    title: PropTypes.string,
+    textItems: PropTypes.arrayOf(PropTypes.string),
   }),
 }
 

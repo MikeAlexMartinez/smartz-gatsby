@@ -34,7 +34,6 @@ export const contactPageQuery = graphql`
         subtitle
         meta_title
         meta_description
-        heading
         contacts {
           email
           description

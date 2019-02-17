@@ -1,40 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Service from '../Service'
 
-const Services = ({ data }) => (
-  <div className='columns'>
-    {data.map(price => (
-      <div key={price.plan} className='column' style={{border: '1px solid #eaecee'}}>
-        <section className='section'>
-          <h4 className='has-text-centered has-text-weight-semibold'>
-            {price.plan}
-          </h4>
-          <h2 className='is-size-1 has-text-weight-bold has-text-primary has-text-centered'>
-                        ${price.price}
-          </h2>
-          <p className='has-text-weight-semibold'>{price.description}</p>
-          <ul>
-            {price.items.map(item => (
-              <li key={item} className='is-size-5'>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
+class Services extends Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        textItems: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+  }
+
+  state = {
+    serviceInView: 0,
+  }
+
+  switchService = (id) => {
+    this.setState((prevState) => ({
+      serviceInView: id,
+    }))
+  }
+
+  render () {
+    const { data } = this.props
+    const { serviceInView } = this.state
+
+    return (
+      <div className='section'>
+        {data.map((s, i) => (
+          <Service
+            title={s.title}
+            textItems={s.textItems}
+            isOpen={i === serviceInView}
+            viewService={() => this.switchService(i)}
+          />
+        ))}
       </div>
-    ))}
-  </div>
-)
-
-Services.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      plan: PropTypes.string,
-      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      description: PropTypes.string,
-      items: PropTypes.array,
-    })
-  ),
+    )
+  }
 }
 
 export default Services

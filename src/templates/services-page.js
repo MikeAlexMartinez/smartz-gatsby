@@ -11,7 +11,7 @@ const ServicesPage = ({data}) => {
       title={frontmatter.title}
       meta_title={frontmatter.meta_title}
       meta_description={frontmatter.meta_description}
-      pricing={frontmatter.pricing}
+      services={frontmatter.services}
     />
   )
 }
@@ -31,6 +31,12 @@ export const servicesPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        meta_title
+        meta_description
+        services {
+          title
+          textItems
+        }
       }
     }
   }

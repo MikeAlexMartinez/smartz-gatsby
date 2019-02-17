@@ -2,6 +2,9 @@
 templateKey: 'services-page'
 path: /services
 title: My Services
+meta_title: My Services | Smartz Bookkeeping & Accounts, Bicester
+meta_description: These are the services offered by the Smartz
+  Bookkeeping and Accounts of Bicester 
 services:
   - title: Payroll, RTI and Auto-enrolment into Pensions
     textItems:
