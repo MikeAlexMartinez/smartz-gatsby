@@ -11,6 +11,7 @@ const ContactPage = ({data}) => {
       subtitle={frontmatter.subtitle}
       meta_title={frontmatter.meta_title}
       meta_description={frontmatter.meta_description}
+      services={frontmatter.service_options}
     />
   )
 }
@@ -33,6 +34,7 @@ export const contactPageQuery = graphql`
         subtitle
         meta_title
         meta_description
+        service_options
       }
     }
   }

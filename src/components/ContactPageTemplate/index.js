@@ -8,6 +8,7 @@ const ContactPageTemplate = ({
   subtitle,
   meta_title,
   meta_description,
+  services,
 }) => {
   return (
     <div>
@@ -35,7 +36,9 @@ const ContactPageTemplate = ({
       </section>
       <section className='section'>
         <div className='container'>
-          <ContactForm />
+          <div className='section'>
+            <ContactForm services={services} />
+          </div>
         </div>
       </section>
     </div>
@@ -47,6 +50,7 @@ ContactPageTemplate.propTypes = {
   subtitle: PropTypes.string,
   meta_title: PropTypes.string,
   meta_description: PropTypes.string,
+  services: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default ContactPageTemplate

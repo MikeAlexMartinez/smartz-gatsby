@@ -33,7 +33,13 @@ class Services extends Component {
             title={s.title}
             textItems={s.textItems}
             isOpen={i === serviceInView}
-            viewService={() => this.switchService(i)}
+            viewService={(isOpen) => {
+              if (!isOpen) {
+                this.switchService(i)
+              } else {
+                this.switchService(-1)
+              }
+            }}
           />
         ))}
       </div>

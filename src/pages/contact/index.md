@@ -8,4 +8,13 @@ meta_description: >-
   ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
   venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis
   consectetur purus sit amet fermentum.
+service_options:
+  - Payroll, RTI and Auto-enrolment into Pensions
+  - Bank Reconciliations
+  - CIS Returns
+  - VAT Returns
+  - Credit Control/Debt Chasing
+  - Processing Sales and Purchase Invoices
+  - Cash Flow Reporting
+  - Ad Hoc Reporting
 ---

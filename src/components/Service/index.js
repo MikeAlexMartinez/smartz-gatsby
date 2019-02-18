@@ -1,18 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
 const Service = ({ title, textItems, isOpen, viewService }) => (
-  <div className='box'>
+  <div className='box cursor'
+    onClick={() => viewService(isOpen)}
+  >
     <div className='level'>
-      <div className='level-left'>
+      <div className='level-left has-text-weight-semibold'>
         {title}
       </div>
       <span
         className='level-right icon has-text-info'
-        onClick={() => viewService()}
-      >
-        <i className='fas fa-plus' />
+      >{(isOpen
+          ? <FaMinus />
+          : <FaPlus />
+        )}
       </span>
     </div>
     {isOpen && textItems.map(item => (
