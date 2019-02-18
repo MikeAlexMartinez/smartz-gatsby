@@ -11,7 +11,6 @@ const ContactPage = ({data}) => {
       subtitle={frontmatter.subtitle}
       meta_title={frontmatter.meta_title}
       meta_description={frontmatter.meta_description}
-      contacts={frontmatter.contacts}
     />
   )
 }
@@ -34,10 +33,6 @@ export const contactPageQuery = graphql`
         subtitle
         meta_title
         meta_description
-        contacts {
-          email
-          description
-        }
       }
     }
   }

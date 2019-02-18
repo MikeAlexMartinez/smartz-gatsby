@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Service = ({ title, textItems, isOpen, viewService }) => (
   <div className='box'>
@@ -7,10 +8,12 @@ const Service = ({ title, textItems, isOpen, viewService }) => (
       <div className='level-left'>
         {title}
       </div>
-      <button
-        className='level-right'
+      <span
+        className='level-right icon has-text-info'
         onClick={() => viewService()}
-      >View Service</button>
+      >
+        <i className='fas fa-plus' />
+      </span>
     </div>
     {isOpen && textItems.map(item => (
       <div className='level'>
