@@ -19,7 +19,16 @@ const ServicesPage = ({data}) => {
 ServicesPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        meta_title: PropTypes.string,
+        meta_description: PropTypes.string,
+        services: PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          textItems: PropTypes.arrayOf(PropTypes.string),
+        })),
+      }),
     }),
   }),
 }
@@ -34,6 +43,7 @@ export const servicesPageQuery = graphql`
         meta_title
         meta_description
         services {
+          id
           title
           textItems
         }

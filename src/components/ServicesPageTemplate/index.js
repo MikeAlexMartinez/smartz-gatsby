@@ -47,10 +47,11 @@ ServicesPageTemplate.propTypes = {
   title: PropTypes.string,
   meta_title: PropTypes.string,
   meta_description: PropTypes.string,
-  services: PropTypes.shape({
+  services: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
     title: PropTypes.string,
     textItems: PropTypes.arrayOf(PropTypes.string),
-  }),
+  })),
 }
 
 export default ServicesPageTemplate

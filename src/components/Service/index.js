@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
-const Service = ({ title, textItems, isOpen, viewService }) => (
-  <div className='box cursor'
+const Service = ({ id, title, textItems, isOpen, viewService }) => (
+  <div
+    key={id}
+    className='box cursor'
     onClick={() => viewService(isOpen)}
   >
     <div className='level'>
@@ -18,8 +20,8 @@ const Service = ({ title, textItems, isOpen, viewService }) => (
         )}
       </span>
     </div>
-    {isOpen && textItems.map(item => (
-      <div className='level'>
+    {isOpen && textItems.map((item, i) => (
+      <div key={`${i}-${item[0]}`} className='level'>
         {item}
       </div>
     ))}
@@ -27,6 +29,7 @@ const Service = ({ title, textItems, isOpen, viewService }) => (
 )
 
 Service.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   textItems: PropTypes.arrayOf(PropTypes.string).isRequired,

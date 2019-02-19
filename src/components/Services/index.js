@@ -6,6 +6,7 @@ class Services extends Component {
   static propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.number,
         title: PropTypes.string,
         textItems: PropTypes.arrayOf(PropTypes.string),
       })
@@ -30,6 +31,8 @@ class Services extends Component {
       <div className='section'>
         {data.map((s, i) => (
           <Service
+            key={`s-${s.id}`}
+            id={s.id}
             title={s.title}
             textItems={s.textItems}
             isOpen={i === serviceInView}

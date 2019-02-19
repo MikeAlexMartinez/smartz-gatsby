@@ -18,10 +18,28 @@ class ContactForm extends React.Component {
       isValid: false,
       errorMessage: '',
     },
+    submittingForm: false,
     services: this.props.services.map(s => ({...s, selected: false})) || [],
   }
 
-  validateForm = () => {
+  submitForm = () => {
+    if (this.isFormValid()) {
+      this.setState((prevState) => ({
+        ...prevState,
+        submittingForm: true,
+      }))
+      const { name, email, message } = this.state
+      const form = {
+        source: 'Smartz-Contact',
+        name,
+        email,
+        message,
+      }
+      this.props.handleForm(form)
+    }
+  }
+
+  isFormValid = () => {
     const { name, email, message } = this.state
     return name.isValid && email.isValid && message.isValid
   }
@@ -46,23 +64,27 @@ class ContactForm extends React.Component {
     }
   }
 
-  handleName = (value) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      name: {
-        value,
-        isValid: this.validateName(value),
-      },
-    }))
+  handleName = (evt) => {
+    const value = evt.target.value
+    this.setState((prevState) => {
+      console.log(value)
+      return {
+        ...prevState,
+        name: {
+          value,
+          isValid: this.validateName(value),
+        },
+      }
+    })
   }
 
   validateEmail = (value) => {
     let errors = { messages: [] }
     if (!value || value.length === 0) {
-      errors.push('An e-mail is required')
+      errors.messages.push('An e-mail is required')
     }
     if (!emailValidator.validate(value)) {
-      errors.push('This appears to be an invalid e-mail address')
+      errors.messages.push('This appears to be an invalid e-mail address')
     }
     return {
       ...errors,
@@ -70,7 +92,8 @@ class ContactForm extends React.Component {
     }
   }
 
-  handleEmail = (value) => {
+  handleEmail = (evt) => {
+    const value = evt.target.value
     this.setState((prevState) => ({
       ...prevState,
       email: {
@@ -82,19 +105,20 @@ class ContactForm extends React.Component {
 
   validateMessage = (value) => {
     let errors = { messages: [] }
-    if (!value || value.length === 10) {
+    if (!value || value.length < 10) {
       errors.messages.push('Your message should contain at least 10 characters')
     }
-    if (!/[\w\s'"&@().,;£$€!?-]/.test(value)) {
+    if (!/([\w\s'"&@().,;£$€!?-])/.test(value)) {
       errors.messages.push('Message should contain alphanumeric characters')
     }
     return {
-      errors,
+      ...errors,
       isValid: errors.messages.length === 0,
     }
   }
 
-  handleMessage = (value) => {
+  handleMessage = (evt) => {
+    const value = evt.target.value
     this.setState((prevState) => ({
       ...prevState,
       message: {
@@ -134,6 +158,7 @@ class ContactForm extends React.Component {
 
   render () {
     const { name, email, message, services } = this.state
+    const isInvalid = !this.isFormValid()
     console.log(services)
     return (
       <div className='content'>
@@ -185,7 +210,9 @@ class ContactForm extends React.Component {
 
           <div className='field'>
             <div className='control'>
-              <button className='button is-link is-large'
+              <button
+                disabled={isInvalid}
+                className='button is-link is-large'
                 onClick={this.submitForm}
               >Submit</button>
             </div>
