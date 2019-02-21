@@ -94,7 +94,6 @@ class ContactForm extends React.Component {
   handleName = (evt) => {
     const value = evt.target.value
     this.setState((prevState) => {
-      console.log(value)
       return {
         ...prevState,
         name: {
@@ -184,10 +183,9 @@ class ContactForm extends React.Component {
   }
 
   render () {
-    const { name, email, message, services,
+    const { name, email, message,
       submittingForm, errorEncountered, sendSuccess } = this.state
     const isInvalid = !this.isFormValid()
-    console.log(services)
     return (
       <div className='content'>
         <div className='box'>
