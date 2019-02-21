@@ -20,7 +20,7 @@ class ContactForm extends React.Component {
       errorMessage: '',
     },
     errorEncountered: false,
-    sendSuccess: true,
+    sendSuccess: false,
     submittingForm: false,
     services: this.props.services.map(s => ({...s, selected: false})) || [],
   }
