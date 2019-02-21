@@ -1,5 +1,6 @@
 import React from 'react'
 import * as emailValidator from 'email-validator'
+import { handleForm } from '../../api/FormAPI'
 
 class ContactForm extends React.Component {
   state = {
@@ -18,6 +19,8 @@ class ContactForm extends React.Component {
       isValid: false,
       errorMessage: '',
     },
+    errorEncountered: false,
+    sendSuccess: true,
     submittingForm: false,
     services: this.props.services.map(s => ({...s, selected: false})) || [],
   }
@@ -31,12 +34,36 @@ class ContactForm extends React.Component {
       const { name, email, message } = this.state
       const form = {
         source: 'Smartz-Contact',
-        name,
-        email,
-        message,
+        name: name.value,
+        email: email.value,
+        message: message.value,
       }
-      this.props.handleForm(form)
+
+      handleForm(form)
+        .then(this.formSuccess)
+        .catch(this.formError)
     }
+  }
+
+  formError = (e) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      errorEncountered: true,
+    }))
+
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        errorEncountered: false,
+      }))
+    }, 1000 * 15)
+  }
+
+  formSuccess = (res) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      sendSuccess: true,
+    }))
   }
 
   isFormValid = () => {
@@ -157,66 +184,81 @@ class ContactForm extends React.Component {
   }
 
   render () {
-    const { name, email, message, services } = this.state
+    const { name, email, message, services,
+      submittingForm, errorEncountered, sendSuccess } = this.state
     const isInvalid = !this.isFormValid()
     console.log(services)
     return (
       <div className='content'>
         <div className='box'>
-          <div className='field'>
-            <label className='label is-large'>Name</label>
-            <div className='control'>
-              <input
-                className='input is-large'
-                type='text'
-                placeholder="What's your name"
-                value={name.value}
-                onChange={this.handleName}
-              />
+          {!sendSuccess && (<div>
+            <div className='field'>
+              <label className='label is-large'>Name</label>
+              <div className='control'>
+                <input
+                  className='input is-large'
+                  type='text'
+                  placeholder="What's your name"
+                  value={name.value}
+                  onChange={this.handleName}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className='field'>
-            <label className='label is-large'>Email</label>
-            <div className='control'>
-              <input
-                className='input is-large'
-                type='email'
-                placeholder='Please provide your e-mail address'
-                value={email.value}
-                onChange={this.handleEmail}
-              />
-              <span className='icon is-small is-left'>
-                <i className='fas fa-envelope' />
-              </span>
-              <span className='icon is-small is-right'>
-                <i className='fas fa-exclamation-triangle' />
-              </span>
+            <div className='field'>
+              <label className='label is-large'>Email</label>
+              <div className='control'>
+                <input
+                  className='input is-large'
+                  type='email'
+                  placeholder='Please provide your e-mail address'
+                  value={email.value}
+                  onChange={this.handleEmail}
+                />
+                <span className='icon is-small is-left'>
+                  <i className='fas fa-envelope' />
+                </span>
+                <span className='icon is-small is-right'>
+                  <i className='fas fa-exclamation-triangle' />
+                </span>
+              </div>
+              {/* <p className='help is-danger'>This email is invalid</p> */}
             </div>
-            {/* <p className='help is-danger'>This email is invalid</p> */}
-          </div>
 
-          <div className='field'>
-            <label className='label is-large'>Message</label>
-            <div className='control'>
-              <textarea
-                className='textarea is-large'
-                placeholder='Textarea'
-                value={message.value}
-                onChange={this.handleMessage}
-              />
+            <div className='field'>
+              <label className='label is-large'>Message</label>
+              <div className='control'>
+                <textarea
+                  className='textarea is-large'
+                  placeholder='Textarea'
+                  value={message.value}
+                  onChange={this.handleMessage}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className='field'>
-            <div className='control'>
-              <button
-                disabled={isInvalid}
-                className='button is-link is-large'
-                onClick={this.submitForm}
-              >Submit</button>
+            <div className='field'>
+              <div className='control'>
+                <button
+                  disabled={isInvalid}
+                  className='button is-link is-large'
+                  onClick={this.submitForm}
+                >Submit</button>
+              </div>
+              {errorEncountered && (
+                <span className='form-message'>Error Encountered, Please try again later...</span>
+              )}
+              {submittingForm && (
+                <span className='form-message'>Sending Form...</span>
+              )}
             </div>
-          </div>
+          </div>)}
+          {sendSuccess && (
+            <div className='large has-text-centered sent-success'>
+              <h2>Thanks, Message Sent Successfully!</h2>
+              <h2>I will get back to you as soon as possible.</h2>
+            </div>
+          )}
         </div>
       </div>
     )
