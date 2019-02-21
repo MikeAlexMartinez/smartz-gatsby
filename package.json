@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-business",
-  "description": "Gatsby Business Website Starter",
-  "author": "Vaibhav Sharma",
+  "name": "smartz-bookkeeping",
+  "description": "inspired by Gatsby Business Website Starter, Website for Smartz Bookkeeping & Accounts",
+  "author": "Michael Martinez",
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,15 @@
     "clean": "rm -rf public/ .cache/"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-regular-svg-icons": "^5.7.2",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.2.1",
+    "axios": "^0.18.0",
     "bulma": "^0.7.2",
+    "email-validator": "^2.0.4",
     "gatsby": "^2.0.98",
     "gatsby-paginate": "^1.0.17",
     "gatsby-plugin-feed": "^2.0.11",
@@ -43,6 +50,7 @@
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.4.0",
     "react-share": "^2.4.0",
     "uglifyjs-webpack-plugin": "^2.1.1"
   },
