@@ -1,12 +1,24 @@
 import React from 'react'
-import Content from '../Content'
+import Helmet from 'react-helmet'
+import Offerings from '../Offerings'
+import Testimonials from '../Testimonials'
 import PropTypes from 'prop-types'
 
-const AboutPageTemplate = ({title, content, contentComponent}) => {
-  const PageContent = contentComponent || Content
+const AboutPageTemplate = ({
+  title,
+  introduction,
+  meta_title,
+  meta_description,
+  testimonials,
+}) => {
+  const testimonialsToShow = testimonials.filter(t => t.type !== 'example')
 
   return (
     <div>
+      <Helmet>
+        <title>{meta_title}</title>
+        <meta name='description' content={meta_description} />
+      </Helmet>
       <section className='hero is-primary is-bold'>
         <div className='hero-body'>
           <div className='container'>
@@ -24,10 +36,18 @@ const AboutPageTemplate = ({title, content, contentComponent}) => {
       </section>
       <section className='section section--gradient'>
         <div className='container'>
-          <div className='columns'>
-            <div className='column is-10 is-offset-1'>
-              <div className='section'>
-                <PageContent className='content' content={content} />
+          <div className='section'>
+            <div className='columns'>
+              <div className='column is-10 is-offset-1'>
+                <div className='content'>
+                  <Offerings gridItems={introduction.blurbs} />
+                  {testimonialsToShow.length > 0 && (
+                    <div>
+                      <h2 className='has-text-weight-semibold is-size-2'>Testimonials</h2>
+                      <Testimonials testimonials={testimonialsToShow} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -38,9 +58,13 @@ const AboutPageTemplate = ({title, content, contentComponent}) => {
 }
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
+  title: PropTypes.string,
+  meta_title: PropTypes.string,
+  meta_description: PropTypes.string,
+  introduction: PropTypes.shape({
+    blurbs: PropTypes.array,
+  }),
+  testimonials: PropTypes.array,
 }
 
 export default AboutPageTemplate

@@ -19,8 +19,11 @@ const NavBar = ({toggleNavbar, isActive}) => (
     </div>
     <div className={`navbar-menu ${isActive ? 'is-active' : ''}`} id='navMenu'>
       <div className='navbar-end'>
+        <Link className='navbar-item' to='/about'>
+          About
+        </Link>
         <Link className='navbar-item' to='/services'>
-                        Services
+          Services
         </Link>
         <div className='navbar-item'>
           <div className='field is-grouped'>
