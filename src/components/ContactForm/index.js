@@ -1,23 +1,24 @@
 import React from 'react'
 import * as emailValidator from 'email-validator'
 import { handleForm } from '../../api/FormAPI'
+import FormErrors from '../FormErrors'
 
 class ContactForm extends React.Component {
   state = {
     name: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: '',
     },
     email: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: '',
     },
     message: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: '',
     },
     errorEncountered: false,
     sendSuccess: false,
@@ -98,7 +99,7 @@ class ContactForm extends React.Component {
         ...prevState,
         name: {
           value,
-          isValid: this.validateName(value),
+          ...this.validateName(value),
         },
       }
     })
@@ -133,9 +134,11 @@ class ContactForm extends React.Component {
     let errors = { messages: [] }
     if (!value || value.length < 10) {
       errors.messages.push('Your message should contain at least 10 characters')
+    } else if (value.length > 1000) {
+      errors.messages.push('Your message should less than 1000 characters')
     }
     if (!/([\w\s'"&@().,;£$€!?-])/.test(value)) {
-      errors.messages.push('Message should contain alphanumeric characters')
+      errors.messages.push('Your message should contain alphanumeric characters')
     }
     return {
       ...errors,
@@ -201,6 +204,7 @@ class ContactForm extends React.Component {
                   onChange={this.handleName}
                 />
               </div>
+              <FormErrors errors={name.messages} />
             </div>
 
             <div className='field'>
@@ -220,7 +224,7 @@ class ContactForm extends React.Component {
                   <i className='fas fa-exclamation-triangle' />
                 </span>
               </div>
-              {/* <p className='help is-danger'>This email is invalid</p> */}
+              <FormErrors errors={email.messages} />
             </div>
 
             <div className='field'>
@@ -228,11 +232,12 @@ class ContactForm extends React.Component {
               <div className='control'>
                 <textarea
                   className='textarea is-large'
-                  placeholder='Textarea'
+                  placeholder='Please leave a message'
                   value={message.value}
                   onChange={this.handleMessage}
                 />
               </div>
+              <FormErrors errors={message.messages} />
             </div>
 
             <div className='field'>
