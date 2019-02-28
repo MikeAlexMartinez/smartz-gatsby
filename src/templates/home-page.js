@@ -9,11 +9,11 @@ const HomePage = ({ data }) => {
   return (
     <HomePageTemplate
       title={frontmatter.title}
+      subtitle={frontmatter.subtitle}
       meta_title={frontmatter.meta_title}
       meta_description={frontmatter.meta_description}
       heading={frontmatter.heading}
       description={frontmatter.description}
-      introduction={frontmatter.introduction}
       testimonials={frontmatter.testimonials}
     />
   )
@@ -34,14 +34,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        subtitle
         meta_title
         meta_description
-        introduction {
-          blurbs {
-            id
-            text
-          }
-        }
         testimonials {
           author
           quote
