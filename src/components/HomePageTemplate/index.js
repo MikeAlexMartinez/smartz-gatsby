@@ -55,7 +55,7 @@ const HomePageTemplate = ({
                 <Link className='home-link button is-large is-primary is-outlined'
                   to='/services'
                 >
-                  My services
+                  My Services
                 </Link>
               </div>
               <div className='home-link-container'>
