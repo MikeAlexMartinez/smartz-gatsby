@@ -13,7 +13,7 @@ services:
         for various size companies. Together with the RTI submissions that
         HMRC require every time payments are made to your employees. Also
         submitting details to both HMRC and your pension provider. As well
-        as letting you know how much need to be paid to HMRC and when.
+        as letting you know how much needs to be paid to HMRC and when.
   - id: 2
     title: Bank Reconciliations
     textItems:
