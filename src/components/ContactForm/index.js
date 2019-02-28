@@ -1,23 +1,24 @@
 import React from 'react'
 import * as emailValidator from 'email-validator'
 import { handleForm } from '../../api/FormAPI'
+import FormErrors from '../FormErrors'
 
 class ContactForm extends React.Component {
   state = {
     name: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: [],
     },
     email: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: [],
     },
     message: {
       value: '',
       isValid: false,
-      errorMessage: '',
+      messages: [],
     },
     errorEncountered: false,
     sendSuccess: false,
@@ -98,7 +99,7 @@ class ContactForm extends React.Component {
         ...prevState,
         name: {
           value,
-          isValid: this.validateName(value),
+          ...this.validateName(value),
         },
       }
     })
@@ -133,9 +134,11 @@ class ContactForm extends React.Component {
     let errors = { messages: [] }
     if (!value || value.length < 10) {
       errors.messages.push('Your message should contain at least 10 characters')
+    } else if (value.length > 1000) {
+      errors.messages.push('Your message should less than 1000 characters')
     }
     if (!/([\w\s'"&@().,;£$€!?-])/.test(value)) {
-      errors.messages.push('Message should contain alphanumeric characters')
+      errors.messages.push('Your message should contain alphanumeric characters')
     }
     return {
       ...errors,
@@ -188,76 +191,76 @@ class ContactForm extends React.Component {
     const isInvalid = !this.isFormValid()
     return (
       <div className='content'>
-        <div className='box'>
-          {!sendSuccess && (<div>
-            <div className='field'>
-              <label className='label is-large'>Name</label>
-              <div className='control'>
-                <input
-                  className='input is-large'
-                  type='text'
-                  placeholder="What's your name"
-                  value={name.value}
-                  onChange={this.handleName}
-                />
-              </div>
+        {!sendSuccess && (<div>
+          <div className='field'>
+            <label className='label is-large'>Name</label>
+            <div className='control'>
+              <input
+                className='input is-medium'
+                type='text'
+                placeholder='Your name...'
+                value={name.value}
+                onChange={this.handleName}
+              />
             </div>
+            <FormErrors errors={name.messages} />
+          </div>
 
-            <div className='field'>
-              <label className='label is-large'>Email</label>
-              <div className='control'>
-                <input
-                  className='input is-large'
-                  type='email'
-                  placeholder='Please provide your e-mail address'
-                  value={email.value}
-                  onChange={this.handleEmail}
-                />
-                <span className='icon is-small is-left'>
-                  <i className='fas fa-envelope' />
-                </span>
-                <span className='icon is-small is-right'>
-                  <i className='fas fa-exclamation-triangle' />
-                </span>
-              </div>
-              {/* <p className='help is-danger'>This email is invalid</p> */}
+          <div className='field'>
+            <label className='label is-large'>Email</label>
+            <div className='control'>
+              <input
+                className='input is-medium'
+                type='email'
+                placeholder='Your e-mail address'
+                value={email.value}
+                onChange={this.handleEmail}
+              />
+              <span className='icon is-small is-left'>
+                <i className='fas fa-envelope' />
+              </span>
+              <span className='icon is-small is-right'>
+                <i className='fas fa-exclamation-triangle' />
+              </span>
             </div>
+            <FormErrors errors={email.messages} />
+          </div>
 
-            <div className='field'>
-              <label className='label is-large'>Message</label>
-              <div className='control'>
-                <textarea
-                  className='textarea is-large'
-                  placeholder='Textarea'
-                  value={message.value}
-                  onChange={this.handleMessage}
-                />
-              </div>
+          <div className='field'>
+            <label className='label is-large'>Message</label>
+            <div className='control'>
+              <textarea
+                className='textarea is-medium message-body'
+                placeholder='Your message...'
+                value={message.value}
+                onChange={this.handleMessage}
+              />
             </div>
+            <FormErrors errors={message.messages} />
+          </div>
 
-            <div className='field'>
-              <div className='control'>
-                <button
-                  disabled={isInvalid}
-                  className='button is-link is-large'
-                  onClick={this.submitForm}
-                >Submit</button>
-              </div>
-              {errorEncountered && (
-                <span className='form-message'>Error Encountered, Please try again later...</span>
-              )}
-              {submittingForm && (
-                <span className='form-message'>Sending Form...</span>
-              )}
+          <div className='field'>
+            <div className='control'>
+              <button
+                disabled={isInvalid}
+                className='button is-link is-large'
+                onClick={this.submitForm}
+              >Submit</button>
             </div>
-          </div>)}
-          {sendSuccess && (
-            <div className='large has-text-centered sent-success'>
-              <h2>Thanks, Message Sent Successfully!</h2>
-              <h2>I will get back to you as soon as possible.</h2>
-            </div>
-          )}
-        </div>
+            {errorEncountered && (
+              <span className='form-message'>Error Encountered, Please try again later...</span>
+            )}
+            {submittingForm && (
+              <span className='form-message'>Sending Form...</span>
+            )}
+          </div>
+        </div>)}
+        {sendSuccess && (
+          <div className='large has-text-centered sent-success'>
+            <h2>Thanks, Message Sent Successfully!</h2>
+            <h2>I will get back to you as soon as possible.</h2>
+          </div>
+        )}
       </div>
     )
   }
