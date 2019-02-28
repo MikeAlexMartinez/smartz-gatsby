@@ -11,7 +11,7 @@ introduction:
       text: >
         I have recently started ‘Smartz Bookkeeping & Accounts’ here in 
         Bicester and I am positive that I can add value to your business 
-        tosupport you in achieving your company goals. With 27 years’ 
+        to support you in achieving your company goals. With 27 years’ 
         experience in bookkeeping and accounts I am looking
         to offer my services to local businesses who need help with their
         bookkeeping and accounts.
