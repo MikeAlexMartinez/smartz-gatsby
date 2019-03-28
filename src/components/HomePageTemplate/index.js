@@ -37,7 +37,7 @@ const HomePageTemplate = ({
       </section>
       <section className='hero'>
         <div className='content title-image-container'>
-          <img src='/img/bicester-centre.webp' />
+          <img src='/img/bicester-centre.png' />
         </div>
       </section>
       <section className='section section--gradient'>
