@@ -12,6 +12,9 @@ function Contact() {
             <p className="relative bottom-5 text-center text-white italic font-extralight">Certified</p>
           </div>
         </div>
+        <div className="border bg-white rounded p-2 mt-12 md:m-0 object-contain">
+            <img src="./images/AAT.png" alt="AAT Certified bookkeeper logo"/>
+        </div>
         <div className="border border-white bg-sky-600 text-white rounded p-2">
           <div className="mb-[2px] p-1">
             <h2 className="text-l md:text-xl">
